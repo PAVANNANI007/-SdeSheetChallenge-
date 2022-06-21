@@ -1,0 +1,49 @@
+class Solution {
+public ListNode mergeTwoLists(ListNode a, ListNode b) {
+
+    ListNode head=null,tail=null;
+    if(a==null&&b==null)return null;
+    if(a==null)return b;
+    if(b==null)return a;
+    
+    if(a.val<=b.val)
+    {
+        head=tail=a;
+        a=a.next;
+                    }
+    else {
+        head=tail=b;
+        b=b.next;
+         }
+    
+    while(a!=null&&b!=null){     
+        if(a.val<=b.val){
+            
+            tail.next=a;
+            a=a.next;
+            tail=tail.next;
+        }
+        else{            
+            tail.next=b;
+                b=b.next;
+            tail=tail.next;
+            
+        }       
+    }
+   
+    while(a!=null){           
+        tail.next=a;
+        a=a.next;
+        tail=tail.next;
+        
+    }
+  
+    while(b!=null){
+        
+        tail.next=b;
+        b=b.next;
+        tail=tail.next;          
+    }     
+    return head;   
+}
+}
